@@ -4,39 +4,6 @@ import numpy as np
 
 st.title("Uber Pickups in NYC")
 
-# Set up the Streamlit page config with the default theme (light or dark)
-st.set_page_config(page_title="Light/Dark Theme Toggle", layout="wide")
-
-# Sidebar for theme selection
-theme = st.sidebar.radio("Select Theme", ("Light", "Dark"))
-
-# Apply the selected theme
-if theme == "Dark":
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #121212;
-            color: white;
-        }
-        </style>
-        """, 
-        unsafe_allow_html=True
-    )
-else:
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: white;
-            color: black;
-        }
-        </style>
-        """, 
-        unsafe_allow_html=True
-    )
-
-
 DATE_COLUMN= "date/time"
 
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
