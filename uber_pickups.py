@@ -17,6 +17,39 @@ def load_data(nrows):
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     return data
 
+# Sidebar for theme selection and data filtering
+st.sidebar.title("Sidebar Menu")
+
+# Theme toggle (Light/Dark)
+theme = st.sidebar.radio("Select Theme", ("Light", "Dark"))
+
+# Apply the selected theme
+if theme == "Dark":
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #121212;
+            color: white;
+        }
+        </style>
+        """, 
+        unsafe_allow_html=True
+    )
+else:
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+        </style>
+        """, 
+        unsafe_allow_html=True
+    )
+
+
 data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache_data)")
