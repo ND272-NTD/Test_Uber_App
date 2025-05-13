@@ -4,6 +4,20 @@ import numpy as np
 
 st.title("Uber Pickups in NYC")
 
+theme = st.sidebar.radio("🌓 Theme", options=["Dark", "Light"], index=0)
+
+if theme == "Dark":
+    primary_color = "#FF4B4B"
+    bg_color = "#1E1E1E"
+    text_color = "#FFFFFF"
+    card_bg = "#2A2A2A"
+else:
+    primary_color = "#FF4B4B"
+    bg_color = "#FFFFFF"
+    text_color = "#000000"
+    card_bg = "#F0F2F6"
+
+
 DATE_COLUMN= "date/time"
 
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
