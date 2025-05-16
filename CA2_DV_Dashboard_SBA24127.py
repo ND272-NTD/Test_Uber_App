@@ -25,7 +25,7 @@ df = load_data()
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
     "Genres",
-    df.genre.unique(),
+    df.genres.unique(),
     ["Action", "Adventure", "Biography", "Comedy", "Drama", "Horror"],
 )
 
