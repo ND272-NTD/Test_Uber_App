@@ -18,7 +18,7 @@ try:
     st.write(f"Loaded {df.shape[0]} movies")
 
     # Check for required columns
-    if 'id' not in df.columns or 'title' not in df.columns or 'overview' not in df.columns:
+    if 'movieId' not in df.columns or 'title' not in df.columns or 'genres' not in df.columns:
         st.error("CSV file must contain 'id', 'title', and 'overview' columns.")
     else:
         # Continue processing the data...
