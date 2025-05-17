@@ -4,14 +4,8 @@ import pandas as pd
 st.title('Movies 4 U 🍿🍿🍿')
 
 
-uploaded_movies_file = st.file_uploader("Upload Movies CSV", type=["csv"])
-uploaded_ratings_file = st.file_uploader("Upload Ratings CSV", type=["csv"])
-
-if uploaded_movies_file is not None and uploaded_ratings_file is not None:
-    try:
-        # Read the uploaded files with ISO-8859-1 encoding
-        movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
-        ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
+ movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
+ ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
 
 
         st.subheader("Movies Data")
