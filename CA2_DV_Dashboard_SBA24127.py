@@ -6,7 +6,7 @@ from wordcloud import WordCloud
 st.title('Movies 4 U 🍿🍿🍿')
 
 movies_file_path = 'movies.csv'  # Path to your movies CSV file
-ratings_file_path = 'ratings.csv'  # Path to your ratings CSV file
+ratings_file_path = 'rating.csv'  # Path to your ratings CSV file
 tags_file_path = 'tags.csv'  # Path to your tags CSV file
 
 try:
