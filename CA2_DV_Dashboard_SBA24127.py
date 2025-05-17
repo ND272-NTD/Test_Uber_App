@@ -1,32 +1,40 @@
 import streamlit as st
 import pandas as pd
-import os
 
-# Streamlit layout
-st.title("Movie Finder 🍿 🤖")
+st.title('Movies 4 U 🍿🍿🍿')
 
-# Specify the path to your local CSV file
-csv_file_path = "movies.csv"  # Assuming the file is in the same folder as your app
 
-# Debugging the file path
-st.write(f"Looking for file: {csv_file_path}")
-st.write(f"Current directory: {os.getcwd()}")
+uploaded_movies_file = st.file_uploader("Upload Movies CSV", type=["csv"])
+uploaded_ratings_file = st.file_uploader("Upload Ratings CSV", type=["csv"])
 
-try:
-    # Read the CSV file
-    df = pd.read_csv(csv_file_path, encoding='ISO-8859-1')  # Try using 'utf-8' if 'ISO-8859-1' fails
-    st.write(f"Loaded {df.shape[0]} movies")
+if uploaded_movies_file is not None and uploaded_ratings_file is not None:
+    try:
+        # Read the uploaded files with ISO-8859-1 encoding
+        movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
+        ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
 
-    # Check for required columns
-    if 'movieId' not in df.columns or 'title' not in df.columns or 'genres' not in df.columns:
-        st.error("CSV file must contain 'id', 'title', and 'overview' columns.")
-    else:
-        # Continue processing the data...
-        st.write(df.head())  # Display first few rows to ensure it's read correctly
 
-except FileNotFoundError:
-    st.error(f"The file {csv_file_path} was not found in the current directory.")
-except UnicodeDecodeError:
-    st.error("Error reading the file. Try using a different encoding (e.g., 'ISO-8859-1').")
-except Exception as e:
-    st.error(f"An error occurred: {e}")
+        st.subheader("Movies Data")
+        st.write(movies.head())
+
+        st.subheader("Ratings Data")
+        st.write(ratings.head())
+
+        # join movies and ratings datasets
+        merged_data = pd.merge(ratings, movies[['movieId', 'title']], on='movieId', how='inner')
+
+        st.subheader("Merged Data (Ratings + Movie Titles)")
+        st.write(merged_data.head())
+
+        st.subheader("Key Performance Indicators (KPIs)")
+        st.metric(label="Total Movies", value=len(movies))
+        st.metric(label="Total Ratings", value=len(ratings))
+
+    except Exception as e:
+        st.error(f"Error occurred while reading the files: {e}")
+
+else:
+    st.warning("Please upload both Movies and Ratings CSV files to proceed.")
+
+# user id entry for integration with recommender system built in MLB section of CA
+user_id = st.number_input('Enter User ID for Recommendations', min_value=1, max_value=1000, value=1)
