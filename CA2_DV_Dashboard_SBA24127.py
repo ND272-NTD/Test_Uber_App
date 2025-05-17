@@ -4,8 +4,8 @@ import pandas as pd
 st.title('Movies 4 U 🍿🍿🍿')
 
 
- movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
- ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
+movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
+ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
 
 
         st.subheader("Movies Data")
@@ -27,8 +27,6 @@ st.title('Movies 4 U 🍿🍿🍿')
     except Exception as e:
         st.error(f"Error occurred while reading the files: {e}")
 
-else:
-    st.warning("Please upload both Movies and Ratings CSV files to proceed.")
 
 # user id entry for integration with recommender system built in MLB section of CA
 user_id = st.number_input('Enter User ID for Recommendations', min_value=1, max_value=1000, value=1)
