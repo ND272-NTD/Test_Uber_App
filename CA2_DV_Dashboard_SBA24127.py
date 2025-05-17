@@ -23,9 +23,5 @@ st.subheader("Key Performance Indicators (KPIs)")
 st.metric(label="Total Movies", value=len(movies))
 st.metric(label="Total Ratings", value=len(ratings))
 
-except Exception as e:
-	st.error(f"Error occurred while reading the files: {e}")
-
-
 # user id entry for integration with recommender system built in MLB section of CA
 user_id = st.number_input('Enter User ID for Recommendations', min_value=1, max_value=1000, value=1)
