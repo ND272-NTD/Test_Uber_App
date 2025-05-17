@@ -32,3 +32,5 @@ try:
     st.subheader("Merged Data (Ratings + Movie Titles)")
     st.write(merged_data.head())
 
+except Exception as e:
+    st.error(f"Error occurred while reading the files: {e}")
