@@ -7,25 +7,24 @@ st.title('Movies 4 U 🍿🍿🍿')
 movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
 ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
 
+st.subheader("Movies Data")
+st.write(movies.head())
 
-        st.subheader("Movies Data")
-        st.write(movies.head())
+st.subheader("Ratings Data")
+st.write(ratings.head())
 
-        st.subheader("Ratings Data")
-        st.write(ratings.head())
+# join movies and ratings datasets
+merged_data = pd.merge(ratings, movies[['movieId', 'title']], on='movieId', how='inner')
 
-        # join movies and ratings datasets
-        merged_data = pd.merge(ratings, movies[['movieId', 'title']], on='movieId', how='inner')
+st.subheader("Merged Data (Ratings + Movie Titles)")
+st.write(merged_data.head())
 
-        st.subheader("Merged Data (Ratings + Movie Titles)")
-        st.write(merged_data.head())
+st.subheader("Key Performance Indicators (KPIs)")
+st.metric(label="Total Movies", value=len(movies))
+st.metric(label="Total Ratings", value=len(ratings))
 
-        st.subheader("Key Performance Indicators (KPIs)")
-        st.metric(label="Total Movies", value=len(movies))
-        st.metric(label="Total Ratings", value=len(ratings))
-
-    except Exception as e:
-        st.error(f"Error occurred while reading the files: {e}")
+except Exception as e:
+	st.error(f"Error occurred while reading the files: {e}")
 
 
 # user id entry for integration with recommender system built in MLB section of CA
