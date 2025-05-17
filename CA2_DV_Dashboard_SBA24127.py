@@ -5,11 +5,6 @@ from wordcloud import WordCloud
 
 st.title('Movies 4 U 🍿🍿🍿')
 
-
-movies = pd.read_csv(uploaded_movies_file, encoding='ISO-8859-1')
-ratings = pd.read_csv(uploaded_ratings_file, encoding='ISO-8859-1')
-
-# Define the file paths for the local files (replace with actual paths on your system)
 movies_file_path = 'movies.csv'  # Path to your movies CSV file
 ratings_file_path = 'ratings.csv'  # Path to your ratings CSV file
 tags_file_path = 'tags.csv'  # Path to your tags CSV file
