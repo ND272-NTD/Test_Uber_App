@@ -58,7 +58,7 @@ with col[0]:
 with col[1]:
     st.markdown('#### Number of Movies by genre')
 
-    fig, ax = plt.subplots(figsize=(6, 4))
+    fig, ax = plt.subplots(figsize=(4,2))
     genre_counts.plot(kind='bar', ax=ax, color='skyblue')
     ax.set_title('Number of Movies per Genre')
     ax.set_xlabel('Genre')
