@@ -22,9 +22,23 @@ with st.sidebar:
     
     year_list = list(df.year.unique())[::-1]
     
+    all_genres = df['genres'].str.split('|').explode().unique()
+    
     selected_year = st.selectbox('Select a year', year_list, index=len(year_list)-1)
     df_selected_year = df[df.year == selected_year]
     df_selected_year_sorted = df_selected_year.sort_values(by="average_rating", ascending=False)
+
+    selected_genre = st.selectbox('Select a genre', ['All'] + list(all_genres))
+
+    # Filter movies based on selected year and genre
+    if selected_genre != 'All':
+        df_filtered = df[df['genres'].str.contains(selected_genre)]
+    else:
+        df_filtered = df
+
+    # Show filtered data
+    st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
+    st.dataframe(df_filtered)
 
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
