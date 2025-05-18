@@ -100,7 +100,7 @@ with col[2]:
         df_top_rated[["title", "average_rating"]], 
        #df_selected_year_sorted[["title", "average_rating"]],  # Only display title and average_rating columns
         hide_index=True,  # Hide index to keep it clean
-        height=500,
+        height=1000,
         width=None,  # Auto-adjust width
         column_config={
             "title": st.column_config.TextColumn("Title"),
