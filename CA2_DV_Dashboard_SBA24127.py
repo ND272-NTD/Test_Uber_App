@@ -63,15 +63,6 @@ exploded_df['genre'] = exploded_genres
 
 genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_values(ascending=False)
 
-filtered_movies = df[df['rating_count'] >= min_ratings]
-
-# If there are no movies meeting the condition, show a message
-if filtered_movies.empty:
-    st.write("No movies found with the selected rating count threshold.")
-else:
-    # Sort the filtered movies by rating_count and take the top 10
-    top_movies = filtered_movies.sort_values(by='rating_count', ascending=False).head(10)
-
 
 
 # main dashboard setup and layout
