@@ -43,4 +43,14 @@ with st.sidebar:
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
+movie_count = df['movieId'].nunique()
+
+# main dashboard setup and layout
+
 col = st.columns((1.5, 4.5, 2), gap='medium')
+
+with col[0]:
+    st.markdown('Movies 4 U stats')
+    st.metric("Total Movies to watch", movie_count)
+
+
