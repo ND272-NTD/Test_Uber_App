@@ -54,7 +54,7 @@ with col[0]:
     st.metric("Total Movies to watch", movie_count)
 
 
-with col[3]:
+with col[2]:
     st.markdown('#### Top Rated Movies of All-Time')
     
     # Display the sorted DataFrame with column configurations inside col3
