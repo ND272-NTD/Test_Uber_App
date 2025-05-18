@@ -119,8 +119,8 @@ with col[1]:
             title=f"Top Movies with at least {min_ratings} Ratings"
         )
 
-        # Display the chart in Streamlit
-        st.altair_chart(chart, use_container_width=True)
+    # Display the chart in Streamlit
+    st.altair_chart(chart, use_container_width=True)
 
 with col[2]:
     st.markdown('#### Top Rated Movies of All-Time')
