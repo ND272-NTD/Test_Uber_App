@@ -59,7 +59,7 @@ genre_counts = exploded_genres.value_counts().reset_index()
 genre_counts.columns = ['Genre', 'Movie Count']
 
 exploded_df = df.loc[exploded_genres.index, ['average_rating']].copy()
-    exploded_df['genre'] = exploded_genres
+exploded_df['genre'] = exploded_genres
 
     genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_values(ascending=False)
 
