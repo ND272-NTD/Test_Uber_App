@@ -15,7 +15,7 @@ alt.themes.enable("dark")
 
 df = pd.read_csv('movies_streamlit.csv')
 
-ratings_df = pd.read_csv('rating.csv',encoding='ISO-8859-1')
+ratings_df = pd.read_csv('rating.csv', encoding='ISO-8859-1')
 
 #st.title('Movies 4 U 🍿🍿🍿')
 
