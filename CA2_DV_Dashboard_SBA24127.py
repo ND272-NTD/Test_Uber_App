@@ -106,12 +106,23 @@ with col[1]:
     st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
     st.dataframe(df_filtered)
 
-    st.markdown("#### Average Rating per Genre")
-    st.line_chart(genre_avg_rating)
-    min_ratings = st.slider("Select minimum number of ratings", 0, int(df['rating_count'].max()), 50)
+   # Place everything in one column (col[1])
+with st.container():
+    # Streamlit slider to filter movies based on the number of ratings
+    min_ratings = st.slider("Select minimum number of ratings", 0, int(df['rating_count'].max()), 100)
 
+    # Filter movies that meet the rating count condition
+    filtered_movies = df[df['rating_count'] >= min_ratings]  # Updated to use df instead of movies
 
-    chart = alt.Chart(top_movies).mark_bar().encode(
+    # If there are no movies meeting the condition, show a message
+    if filtered_movies.empty:
+        st.write("No movies found with the selected rating count threshold.")
+    else:
+        # Sort the filtered movies by rating_count and take the top 10
+        top_movies = filtered_movies.sort_values(by='rating_count', ascending=False).head(10)
+
+        # Create the chart below the slider
+        chart = alt.Chart(top_movies).mark_bar().encode(
             x=alt.X('rating_count:Q', title='Number of Ratings'),
             y=alt.Y('title:N', title='Movie Title', sort='-x'),
             tooltip=['title:N', 'rating_count:Q']
@@ -119,8 +130,8 @@ with col[1]:
             title=f"Top Movies with at least {min_ratings} Ratings"
         )
 
-    # Display the chart in Streamlit
-    st.altair_chart(chart, use_container_width=True)
+        # Display the chart in Streamlit
+        st.altair_chart(chart, use_container_width=True)
 
 with col[2]:
     st.markdown('#### Top Rated Movies of All-Time')
