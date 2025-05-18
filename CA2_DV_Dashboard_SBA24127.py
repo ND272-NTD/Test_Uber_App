@@ -58,6 +58,11 @@ exploded_genres = df['genres'].str.split('|').explode()
 genre_counts = exploded_genres.value_counts().reset_index()
 genre_counts.columns = ['Genre', 'Movie Count']
 
+exploded_df = df.loc[exploded_genres.index, ['average_rating']].copy()
+    exploded_df['genre'] = exploded_genres
+
+    genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_values(ascending=False)
+
 # main dashboard setup and layout
 
 col = st.columns((1, 5.0, 2), gap='medium')
@@ -89,6 +94,9 @@ with col[1]:
      # Show filtered data
     st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
     st.dataframe(df_filtered)
+
+    st.markdown("#### Average Rating per Genre")
+    st.line_chart(genre_avg_rating)
 
 with col[2]:
     st.markdown('#### Top Rated Movies of All-Time')
