@@ -13,36 +13,18 @@ st.set_page_config(
 
 alt.themes.enable("dark")
 
+df = pd.read_csv('movies_streamlit.csv')
+
 #st.title('Movies 4 U 🍿🍿🍿')
 
-#st.subheader('')
+with st.sidebar:
+    st.title('🍿 Movies 4 U')
+    
+    year_list = list(df.year.unique())[::-1]
+    
+    selected_year = st.selectbox('Select a year', year_list, index=len(year_list)-1)
+    df_selected_year = df[df.year == selected_year]
+    df_selected_year_sorted = df_selected_year.sort_values(by="average_rating", ascending=False)
 
-movies_file_path = 'movies.csv'  # Path to your movies CSV file
-ratings_file_path = 'rating.csv'  # Path to your ratings CSV file
-tags_file_path = 'tags.csv'  # Path to your tags CSV file
-
-try:
-    # Load the datasets with ISO-8859-1 encoding
-    movies = pd.read_csv(movies_file_path, encoding='ISO-8859-1')
-    ratings = pd.read_csv(ratings_file_path, encoding='ISO-8859-1')
-    tags = pd.read_csv(tags_file_path, encoding='ISO-8859-1')
-
-    # Display the first few rows of the datasets
-    st.subheader("Movies Data")
-    st.write(movies.head())
-
-    st.subheader("Ratings Data")
-    st.write(ratings.head())
-
-    st.subheader("Tags Data")
-    st.write(tags.head())
-
-    # Perform a join between the movies and ratings datasets
-    merged_data = pd.merge(ratings, movies[['movieId', 'title']], on='movieId', how='inner')
-
-    # Display the first few rows of the merged data
-    st.subheader("Merged Data (Ratings + Movie Titles)")
-    st.write(merged_data.head())
-
-except Exception as e:
-    st.error(f"Error occurred while reading the files: {e}")
+    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
