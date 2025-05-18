@@ -54,31 +54,30 @@ with col[0]:
     st.metric("Total Movies to watch", movie_count)
 
 
-
-with col[2]:
-    st.markdown('#### Top Rated Movies of all-time')
-
-    st.dataframe(df_selected_year_sorted,
-                 column_order=("title", "average_rating"),
-                 hide_index=True,
-                 width=None,
-                 column_config={
-                    "title": st.column_config.TextColumn(
-                        "title",
-                    ),
-                    "average_rating": st.column_config.ProgressColumn(
-                        "average_rating",
-                        format="%f",
-                        min_value=0,
-                        max_value=max(df_selected_year_sorted.population),
-                     )}
-                 )
+with col3:
+    st.markdown('#### Top Rated Movies of All-Time')
     
-    with st.expander('About', expanded=True):
+    # Display the sorted DataFrame with column configurations inside col3
+    st.dataframe(
+        df_selected_year_sorted[["title", "average_rating"]],  # Only display title and average_rating columns
+        hide_index=True,  # Hide index to keep it clean
+        width=None,  # Auto-adjust width
+        column_config={
+            "title": st.column_config.TextColumn("Title"),
+            "average_rating": st.column_config.ProgressColumn(
+                "Average Rating",
+                format="%f",  # Display the average rating as a float
+                min_value=0,  # Set the min value for the progress bar
+                max_value=5  # Set the max value assuming ratings are out of 5
+            )
+        }
+    )
+
+
+
+with st.expander('About', expanded=True):
         st.write('''
             - This project has been carried out as part  of my college project, with the task being to build a interactive dashboard.
             - :orange[**Movies available**]: Original movies dataset had 2,500 films, those with ratings equalled 2,496
             - :orange[**Average ratings**]:  Average ratings overall of all films in the database
             ''')
-
-
