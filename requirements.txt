@@ -2,3 +2,5 @@ streamlit
 matplotlib==3.5.1
 pandas
 wordcloud
+altair
+plotly

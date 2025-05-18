@@ -5,9 +5,17 @@ import altair as alt
 import plotly.express as px
 from wordcloud import WordCloud
 
-st.title('Movies 4 U 🍿🍿🍿')
+st.set_page_config(
+    page_title="Movies 4 U 🍿🍿🍿",
+    page_icon="🍿",
+    layout="wide",
+    initial_sidebar_state="expanded")
 
-st.subheader('')
+alt.themes.enable("dark")
+
+#st.title('Movies 4 U 🍿🍿🍿')
+
+#st.subheader('')
 
 movies_file_path = 'movies.csv'  # Path to your movies CSV file
 ratings_file_path = 'rating.csv'  # Path to your ratings CSV file
