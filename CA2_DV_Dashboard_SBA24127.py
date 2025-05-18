@@ -110,6 +110,8 @@ with col[1]:
 
     st.markdown("#### Average Rating per Genre")
     st.line_chart(genre_avg_rating)
+    min_ratings = st.slider("Select minimum number of ratings", 0, int(df['rating_count'].max()), 50)
+
 
     chart = alt.Chart(top_movies).mark_bar().encode(
             x=alt.X('rating_count:Q', title='Number of Ratings'),
