@@ -61,8 +61,8 @@ with col[1]:
 
     # Create an interactive bar chart using Plotly
     fig = px.bar(genre_counts,
-                 x='genres',
-                 y='# Film,
+                 x='Genre',
+                 y='Movie Count',
                  title='Number of Movies per Genre',
                  labels={'Movie Count': 'Count of Movies', 'Genre': 'Movie Genre'},
                  color='Movie Count',  # Color bars based on the count
