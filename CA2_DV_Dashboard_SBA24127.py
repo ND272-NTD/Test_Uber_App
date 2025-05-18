@@ -54,3 +54,31 @@ with col[0]:
     st.metric("Total Movies to watch", movie_count)
 
 
+
+with col[2]:
+    st.markdown('#### Top Rated Movies of all-time')
+
+    st.dataframe(df_selected_year_sorted,
+                 column_order=("title", "average_rating"),
+                 hide_index=True,
+                 width=None,
+                 column_config={
+                    "title": st.column_config.TextColumn(
+                        "title",
+                    ),
+                    "average_rating": st.column_config.ProgressColumn(
+                        "average_rating",
+                        format="%f",
+                        min_value=0,
+                        max_value=max(df_selected_year_sorted.population),
+                     )}
+                 )
+    
+    with st.expander('About', expanded=True):
+        st.write('''
+            - This project has been carried out as part  of my college project, with the task being to build a interactive dashboard.
+            - :orange[**Movies available**]: Original movies dataset had 2,500 films, those with ratings equalled 2,496
+            - :orange[**Average ratings**]:  Average ratings overall of all films in the database
+            ''')
+
+
