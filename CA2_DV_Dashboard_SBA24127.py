@@ -97,6 +97,7 @@ with col[2]:
     st.dataframe(
         df_selected_year_sorted[["title", "average_rating"]],  # Only display title and average_rating columns
         hide_index=True,  # Hide index to keep it clean
+        height=500,
         width=None,  # Auto-adjust width
         column_config={
             "title": st.column_config.TextColumn("Title"),
