@@ -92,10 +92,13 @@ with col[1]:
 
 with col[2]:
     st.markdown('#### Top Rated Movies of All-Time')
+
+    df_top_rated = df.sort_values(by='average_rating', ascending=False)
     
     # Display the sorted DataFrame with column configurations inside col3
     st.dataframe(
-        df_selected_year_sorted[["title", "average_rating"]],  # Only display title and average_rating columns
+        df_top_rated[["title", "average_rating"]], 
+       #df_selected_year_sorted[["title", "average_rating"]],  # Only display title and average_rating columns
         hide_index=True,  # Hide index to keep it clean
         height=500,
         width=None,  # Auto-adjust width
