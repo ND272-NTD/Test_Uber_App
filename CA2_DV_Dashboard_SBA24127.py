@@ -90,7 +90,7 @@ with col[2]:
 
 
 
-     with st.expander('About', expanded=True):
+    with st.expander('About', expanded=True):
         st.write(''' 
             - This project has been carried out as part of my college project, with the task being to build an interactive dashboard.
             - :orange[**Movies available**]: Original movies dataset had 2,500 films, those with ratings equaled 2,496.
