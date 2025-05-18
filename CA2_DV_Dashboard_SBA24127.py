@@ -15,7 +15,7 @@ alt.themes.enable("dark")
 
 df = pd.read_csv('movies_streamlit.csv')
 
-ratings_df = pd.read_csv("rating.csv, encoding='ISO-8859-1')
+ratings_df = pd.read_csv('rating.csv',encoding='ISO-8859-1')
 
 #st.title('Movies 4 U 🍿🍿🍿')
 
@@ -61,7 +61,7 @@ col = st.columns((1.5, 4.5, 2), gap='medium')
 
 with col[0]:
     st.markdown('Movies 4 U stats')
-    st.metric("Total Movies to watch", ratings_count)
+    st.metric("Total Movies to watch", movie_count)
     
     st.markdown('Total User Ratings')
     st.metric("Total Ratings count", ratings_count)
