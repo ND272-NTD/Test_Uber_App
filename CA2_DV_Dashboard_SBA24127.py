@@ -58,15 +58,17 @@ with col[0]:
 with col[1]:
     st.markdown('#### Number of Movies by genre')
 
-    fig, ax = plt.subplots(figsize=(4,2))
-    genre_counts.plot(kind='bar', ax=ax, color='skyblue')
-    ax.set_title('Number of Movies per Genre')
-    ax.set_xlabel('Genre')
-    ax.set_ylabel('Count of Movies')
-    ax.set_xticklabels(genre_counts.index, rotation=45, ha="right")
+    # Create an interactive bar chart using Plotly
+    fig = px.bar(genre_counts,
+                 x='Genre', 
+                 y='# Films',
+                 title='Number of Movies per Genre',
+                 labels={'Movie Count': 'Count of Movies', 'Genre': 'Movie Genre'},
+                 color='Movie Count',  # Color bars based on the count
+                 color_continuous_scale='Viridis')  # Color scale for bars
 
-    # Display the bar chart
-    st.pyplot(fig)
+    # Display the interactive chart
+    st.plotly_chart(fig)
 
 
 with col[2]:
