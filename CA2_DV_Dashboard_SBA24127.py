@@ -41,8 +41,8 @@ with st.sidebar:
         df_filtered = df
 
     # Show filtered data
-    st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
-    st.dataframe(df_filtered)
+    #st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
+#   st.dataframe(df_filtered)
 
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
@@ -86,6 +86,10 @@ with col[1]:
     # Display the interactive chart
     st.plotly_chart(fig)
 
+
+     # Show filtered data
+    st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
+    st.dataframe(df_filtered)
 
 with col[2]:
     st.markdown('#### Top Rated Movies of All-Time')
