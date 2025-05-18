@@ -61,7 +61,7 @@ genre_counts.columns = ['Genre', 'Movie Count']
 exploded_df = df.loc[exploded_genres.index, ['average_rating']].copy()
 exploded_df['genre'] = exploded_genres
 
-    genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_values(ascending=False)
+genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_values(ascending=False)
 
 # main dashboard setup and layout
 
