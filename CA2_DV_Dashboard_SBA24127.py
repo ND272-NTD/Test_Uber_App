@@ -61,7 +61,7 @@ genre_counts.columns = ['Genre', 'Movie Count']
 
 # main dashboard setup and layout
 
-col = st.columns((1.5, 4.5, 2), gap='medium')
+col = st.columns((1, 5.0, 2), gap='medium')
 
 with col[0]:
     st.markdown('Movies 4 U stats')
