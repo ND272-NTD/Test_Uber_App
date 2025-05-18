@@ -46,6 +46,7 @@ with st.sidebar:
 movie_count = df['movieId'].nunique()
 
 genre_counts = df['genres'].str.split('|').explode().value_counts()
+genre_counts.columns = ['Genre', 'Movie Count']
 
 # main dashboard setup and layout
 
@@ -60,8 +61,8 @@ with col[1]:
 
     # Create an interactive bar chart using Plotly
     fig = px.bar(genre_counts,
-                 x='Genre', 
-                 y='# Films',
+                 x='genres',
+                 y='# Film,
                  title='Number of Movies per Genre',
                  labels={'Movie Count': 'Count of Movies', 'Genre': 'Movie Genre'},
                  color='Movie Count',  # Color bars based on the count
