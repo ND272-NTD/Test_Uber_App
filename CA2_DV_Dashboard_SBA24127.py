@@ -63,8 +63,6 @@ exploded_df['genre'] = exploded_genres
 
 genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_values(ascending=False)
 
-min_ratings = st.slider("Select minimum number of ratings", 0, int(df['rating_count'].max()), 50)
-
 filtered_movies = df[df['rating_count'] >= min_ratings]
 
 # If there are no movies meeting the condition, show a message
