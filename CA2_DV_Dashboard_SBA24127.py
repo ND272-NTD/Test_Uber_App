@@ -45,6 +45,8 @@ with st.sidebar:
 
 movie_count = df['movieId'].nunique()
 
+genre_counts = df['genres'].str.split('|').explode().value_counts()
+
 # main dashboard setup and layout
 
 col = st.columns((1.5, 4.5, 2), gap='medium')
@@ -52,6 +54,19 @@ col = st.columns((1.5, 4.5, 2), gap='medium')
 with col[0]:
     st.markdown('Movies 4 U stats')
     st.metric("Total Movies to watch", movie_count)
+
+with col[1]:
+    st.markdown('#### Number of Movies by genre')
+
+    fig, ax = plt.subplots(figsize=(6, 4))
+    genre_counts.plot(kind='bar', ax=ax, color='skyblue')
+    ax.set_title('Number of Movies per Genre')
+    ax.set_xlabel('Genre')
+    ax.set_ylabel('Count of Movies')
+    ax.set_xticklabels(genre_counts.index, rotation=45, ha="right")
+
+    # Display the bar chart
+    st.pyplot(fig)
 
 
 with col[2]:
