@@ -65,7 +65,7 @@ with col[0]:
     st.markdown('Movies 4 U stats')
     st.metric("Total Movies to watch", formatted_movie_count)
     
-    st.markdown('Total User Ratings')
+   #st.markdown('Total User Ratings')
     st.metric("Total Ratings count", formatted_ratings_count)
     
 
