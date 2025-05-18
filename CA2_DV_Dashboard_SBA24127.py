@@ -47,6 +47,7 @@ with st.sidebar:
 
 movie_count = df['movieId'].nunique()
 ratings_count = ratings_df['movieId'].count()
+formatted_ratings_count = f"{ratings_count:,}"
 
 # Exploding genres to get each genre in a separate row
 exploded_genres = df['genres'].str.split('|').explode()
@@ -64,7 +65,7 @@ with col[0]:
     st.metric("Total Movies to watch", movie_count)
     
     st.markdown('Total User Ratings')
-    st.metric("Total Ratings count", ratings_count)
+    st.metric("Total Ratings count", formatted_ratings_count)
     
 
 with col[1]:
