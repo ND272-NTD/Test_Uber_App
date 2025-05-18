@@ -45,7 +45,11 @@ with st.sidebar:
 
 movie_count = df['movieId'].nunique()
 
-genre_counts = df['genres'].str.split('|').explode().value_counts()
+# Exploding genres to get each genre in a separate row
+exploded_genres = df['genres'].str.split('|').explode()
+
+# Count the number of movies per genre
+genre_counts = exploded_genres.value_counts().reset_index()
 genre_counts.columns = ['Genre', 'Movie Count']
 
 # main dashboard setup and layout
