@@ -24,11 +24,10 @@ ratings_df = pd.read_csv('rating.csv', encoding='ISO-8859-1')
 with st.sidebar:
     st.title('🍿 Movies 4 U')
     
-    year_list = list(df.year.unique())[::-1]
+    selected_year = st.slider('Select a year', min_value=int(df['year'].min()), max_value=int(df['year'].max()), value=int(df['year'].max()))
     
     all_genres = df['genres'].str.split('|').explode().unique()
     
-    selected_year = st.selectbox('Select a year', year_list, index=len(year_list)-1)
     df_selected_year = df[df.year == selected_year]
     df_selected_year_sorted = df_selected_year.sort_values(by="average_rating", ascending=False)
 
