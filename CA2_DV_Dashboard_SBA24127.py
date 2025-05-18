@@ -65,7 +65,7 @@ genre_avg_rating = exploded_df.groupby('genre')['average_rating'].mean().sort_va
 
 # main dashboard setup and layout
 
-col = st.columns((1, 5.0, 2), gap='medium')
+col = st.columns((1, 4.5, 2.5), gap='medium')
 
 with col[0]:
     st.markdown('Movies 4 U stats')
