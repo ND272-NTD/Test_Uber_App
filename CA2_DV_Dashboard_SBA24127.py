@@ -46,6 +46,7 @@ with st.sidebar:
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 movie_count = df['movieId'].nunique()
+ratings_count = ratings_df['movieId'].count()
 
 # Exploding genres to get each genre in a separate row
 exploded_genres = df['genres'].str.split('|').explode()
