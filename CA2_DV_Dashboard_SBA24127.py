@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import altair as alt
+import plotly.express as px
 from wordcloud import WordCloud
 
 st.title('Movies 4 U 🍿🍿🍿')
+
+st.subheader('')
 
 movies_file_path = 'movies.csv'  # Path to your movies CSV file
 ratings_file_path = 'rating.csv'  # Path to your ratings CSV file
