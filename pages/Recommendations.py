@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Movies Recommended 4 U")
+st.title("Movies Recommended 4 U 🍿")
 
 import streamlit as st
 import pandas as pd
@@ -8,8 +8,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 @st.cache_data
 def load_data():
-    movies = pd.read_csv("movies.csv", encoding='ISO-8859-1')  # MovieLens movies dataset
-    ratings = pd.read_csv("rating.csv", encoding='ISO-8859-1')  # MovieLens ratings dataset
+    movies = pd.read_csv("movies.csv", encoding='ISO-8859-1')
+    ratings = pd.read_csv("rating.csv", encoding='ISO-8859-1') 
     return movies, ratings
 
 movies, ratings = load_data()
@@ -21,11 +21,11 @@ user_item_matrix = ratings.pivot_table(index='userId', columns='movieId', values
 user_similarity = cosine_similarity(user_item_matrix)
 user_similarity_df = pd.DataFrame(user_similarity, index=user_item_matrix.index, columns=user_item_matrix.index)
 
-# Streamlit UI
-st.title("MovieLens Recommendation System")
+
+st.title("Based on movies similar other users have reviewed, we think you'll love these!") 
 selected_user = st.selectbox("Select a User ID", user_item_matrix.index)
 
-def get_top_n_recommendations(user_id, n=5):
+def get_top_n_recommendations(user_id, n=10):
     # Similarity scores
     sim_scores = user_similarity_df[user_id].sort_values(ascending=False)
 
@@ -55,6 +55,6 @@ def get_top_n_recommendations(user_id, n=5):
 
 # Show recommendations
 if selected_user:
-    st.subheader(f"Top 5 Movie Recommendations for User {selected_user}")
+    st.subheader(f"Top 10 Movie Recommendations for User {selected_user}")
     recommendations = get_top_n_recommendations(selected_user)
     st.table(recommendations.reset_index(drop=True))
