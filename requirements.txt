@@ -4,3 +4,4 @@ pandas
 wordcloud
 altair
 plotly
+scikit-learn
