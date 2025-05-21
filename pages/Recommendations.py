@@ -6,11 +6,10 @@ import streamlit as st
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Load datasets
 @st.cache_data
 def load_data():
-    movies = pd.read_csv("movies.csv")  # MovieLens movies dataset
-    ratings = pd.read_csv("ratings.csv")  # MovieLens ratings dataset
+    movies = pd.read_csv("movies.csv", encoding='ISO-8859-1')  # MovieLens movies dataset
+    ratings = pd.read_csv("rating.csv", encoding='ISO-8859-1')  # MovieLens ratings dataset
     return movies, ratings
 
 movies, ratings = load_data()
