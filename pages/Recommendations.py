@@ -47,7 +47,7 @@ def get_top_n_recommendations(user_id, n=10):
     recommended_scores = scores.loc[unrated_movies].sort_values(ascending=False).head(n)
 
     # Get movie titles
-    top_movies = movies[movies['movieId'].isin(recommended_scores.index)][['movieId', 'title']]
+    top_movies = movies[movies['movieId'].isin(recommended_scores.index)][['movieId', 'title','genres']]
     top_movies = top_movies.set_index('movieId').loc[recommended_scores.index]
     top_movies['Predicted Rating'] = recommended_scores.values
 
