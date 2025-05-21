@@ -23,7 +23,7 @@ user_similarity_df = pd.DataFrame(user_similarity, index=user_item_matrix.index,
 
 
 st.title("Based on movies similar other users have reviewed, we think you'll love these!") 
-selected_user = st.selectbox("Select a User ID", user_item_matrix.index)
+selected_user = st.selectbox("Select your user ID to get your tailored recommendations", user_item_matrix.index)
 
 def get_top_n_recommendations(user_id, n=10):
     # Similarity scores
