@@ -19,7 +19,7 @@ df['average_rating'] = df['average_rating'].round(2)
 
 ratings_df = pd.read_csv('rating.csv', encoding='ISO-8859-1')
 
-#st.title('Movies 4 U 🍿🍿🍿')
+st.title('Movies 4 U 🍿🍿🍿')
 
 with st.sidebar:
     st.title('🍿 Movies 4 U')
