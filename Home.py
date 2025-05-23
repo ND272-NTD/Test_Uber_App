@@ -28,8 +28,8 @@ with st.sidebar:
     
     all_genres = df['genres'].str.split('|').explode().unique()
     
-    df_selected_year = df[df.year == selected_year]
-    df_selected_year_sorted = df_selected_year.sort_values(by="average_rating", ascending=False)
+    #df_selected_year = df[df.year == selected_year]
+    #df_selected_year_sorted = df_selected_year.sort_values(by="average_rating", ascending=False)
 
     selected_genre = st.selectbox('Select a genre', ['All'] + list(all_genres))
 
