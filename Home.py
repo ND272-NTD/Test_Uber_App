@@ -43,8 +43,8 @@ with st.sidebar:
     #st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
 #   st.dataframe(df_filtered)
 
-    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
+    #color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+    #selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 movie_count = df['movieId'].nunique()
 ratings_count = ratings_df['movieId'].count()
