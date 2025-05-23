@@ -24,7 +24,7 @@ st.title('Movies 4 U 🍿🍿🍿')
 with st.sidebar:
     st.title('🍿 Movies 4 U')
     
-    selected_year = st.slider('Select a year', min_value=int(df['year'].min()), max_value=int(df['year'].max()), value=int(df['year'].max()))
+    #selected_year = st.slider('Select a year', min_value=int(df['year'].min()), max_value=int(df['year'].max()), value=int(df['year'].max()))
     
     all_genres = df['genres'].str.split('|').explode().unique()
     
@@ -94,7 +94,7 @@ with col[1]:
 
 
      # Show filtered data
-    st.write(f"Data for the year {selected_year} and genre {selected_genre}:")
+    st.write(f"Data for genre {selected_genre}:")
     st.dataframe(df_filtered)
 
    # Place everything in one column (col[1])
